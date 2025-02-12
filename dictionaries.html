@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython_stdlib.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+    <title>Dictionaries</title>
+</head>
+<body onload="brython()">
+    <div class="container">
+        <h1>Dictionaries</h1>
+        <P>A dictionary is a collection of key-value pairs, where each key is mapped to a specific value. It allows for efficient retrieval of values based on their associated keys.</P>
+        <P class="mb-5">In Python, dictionaries are flexible and mutable, meaning their contents can be modified after creation.</P>
+
+        <h3>Basic Syntax</h3>
+        <p>The basic syntax of a dictionary_name is: </p>
+        <p>dictionary_name = { key1: value1,  key2: value2,  key3: value3 }</p>
+        <p>A dictionary consists of key-value pairs, with each pair separated by a comma.</p>
+        <p>Keys in a dictionary must be of immutable types, like numbers or strings, because they need to remain unchanged.<br> Lists cannot be used as dictionary keys since they are mutable, and doing so will result in a TypeError.</p>
+        <p class="mb-5">Values in a dictionary, on the other hand, can be of any data type, including strings, numbers, lists, or even other dictionaries.</p>
+
+        <h3>Creating a Dictionary</h3>
+        <p>An empty dictionary is created with curly braces:</p>
+        <img src="images/dictionary/dictionaryEmpty.png" alt="" class="imgExample">
+        <p>An empty dictionary can also be created using the built-in function, dict(), with no arguments:</p>
+        <img src="images/dictionary/dictionaryFunc.png" alt="" class="imgExample">
+        <p>A dictionary with entries:</p>
+        <img src="images/dictionary/dictionaryEx1.png" alt="" class="imgExample mb-5">
+
+        <h3>Accessing values in a Dictionary</h3>
+        <p>You can access the values in a dictionary by using the associated key with the syntax dictionary[key].</p>
+        <img src="images/dictionary/dictionaryPrint.png" alt="" class="imgExample">
+        <p><strong>Output: </strong>3.0</p>
+        <p class="mb-5">If you try to retrieve a value using a key that doesn't exist, a KeyError will be raised. If a value is assigned<br> to a key that doesn't already exist, a new key-value pair will be added to the dictionary. If a value is assigned<br> to an existing key, it will update the existing value with the new one.</p>
+
+        <h3>Iterating Through a Dictionary</h3>
+        <p>There are multiple ways to iterate through a dictionary, depending on whether you want to access the keys, values, or both.</p>
+        <img src="images/dictionary/dictionaryKey.png" alt="" class="imgExample">
+        <p><strong>Output: </strong>apple, peach, orange</p>
+        <img src="images/dictionary/dictionaryValue.png" alt="" class="imgExample">
+        <p><strong>Output: </strong>1.5, 3.0, 0.45</p>
+        <img src="images/dictionary/dictionaryItem.png" alt="" class="imgExample">
+        <p><strong>Output: </strong>('apple', 1.5), ('peach', 3.0), ('orange', 0.45)</p>
+        <img src="images/dictionary/dictionaryKeyValue.png" alt="" class="imgExample">
+        <p class="mb-5"><strong>Output: </strong>apple 1.5, peach 3.0, orange, 0.45</p>
+
+        <h3>Adding to the Dictionary</h3>
+        <p>To add an entry, use square brackets to define a new key and assign it a corresponding value:</p>
+        <img src="images/dictionary/dictionaryAdd.png" alt="" class="imgExample mb-5">
+
+        <h3>Replacing an Existing Entry in an Dictionary</h3>
+        <p>To update a key in an existing dictionary, use the same syntax as adding a new entry (dictionary[new_key] = new_value).<br> However, in this case, the new_key is replaced with an existing key, and the value associated with that key will<br> be updated with the new value (dictionary[existing_key] = new_value).</p>
+        <img src="images/dictionary/dictionaryAddNew.png" alt="" class="imgExample">
+        <p class="mb-5">If the apple key is accessed it will now produce 2 instead of 1.5</p>
+        
+        <h3>Dictionary Functions </h3>
+        <ul class="mb-5">
+            <li>.clear() - Removes all entries in a dictionary.</li>
+            <li>.copy() - Returns a copy of a dictionary.</li>
+            <li>.fromkeys() - Returns a dictionary with the specified keys.</li>
+            <li>.get() - Returns the value of a dictionary entry for a specified key, with an optional fallback value.</li>
+            <li>.items() - Returns a list of tuples for each key-value pair in a dictionary.</li>
+            <li>.keys() - Returns a list of keys for a dictionary.</li>
+            <li>.pop() - Returns the value of a specified key, then removes the key-value pair from a dictionary.</li>
+            <li>.popitem() - Returns the last inserted key-value pair from a dictionary as a tuple, and removes the entry.</li>
+            <li>.setdefault() - Returns the value of a specified key. If the key does not exist, it is inserted with the specified value.</li>
+            <li>.update() - Adds the entries in a specified dictionary, or iterable of key-value pairs, to a dictionary.</li>
+            <li>.values() - Returns a view of values for a dictionary.</li>
+        </ul>
+
+        <div>
+            <h2>Python Code Editor</h2>
+            <textarea id="code"># Creating a dictionary
+student = {
+    "name": "Alice",
+    "age": 20
+    }
+                
+# Accessing values using keys
+print(student["name"])  # Output: Alice
+print(student["age"])   # Output: 20
+                
+# Adding a new key-value pair
+student["major"] = "Physics"
+                
+# Printing the updated dictionary
+print(student)
+                    </textarea>
+                    <br>
+                    <button onclick="runPythonJS()">Run</button>
+                    
+                    <h3>Output:</h3>
+                    <pre id="output"></pre>
+                
+                    <script type="text/python">
+                        from browser import document, console
+                        import sys
+                
+                        def runPython():
+                            code = document["code"].value  # Get code from textarea
+                            output_element = document["output"]
+                            output_element.text = ""  # Clear previous output
+                            
+                            # Redirect output
+                            class OutputRedirect:
+                                def write(self, text):
+                                    output_element.text += text  # Append output
+                            
+                            sys.stdout = OutputRedirect()  # Redirect print() output
+                            sys.stderr = OutputRedirect()  # Redirect error messages
+                            
+                            try:
+                                exec(code, {})  # Execute Python code
+                            except Exception as e:
+                                console.log(str(e))  # Log error in console
+                                output_element.text += "\nError: " + str(e)
+                        
+                        # Expose runPython to JavaScript
+                        from browser import window
+                        window.runPython = runPython
+                    </script>
+                
+                    <script>
+                        function runPythonJS() {
+                            if (window.runPython) {
+                                window.runPython();  // Call the Brython function
+                            } else {
+                                console.error("runPython is not defined. Brython may not have loaded correctly.");
+                            }
+                        }
+                    </script>
+        </div>
+    </div>
+    <a href="index.html" class="btn-back-home">Go Back to Home Page</a>  
+</body>
+</html>

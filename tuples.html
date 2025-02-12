@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython_stdlib.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+    <title>Tuples</title>
+</head>
+<body onload="brython()">
+    <div class="container">
+        <h1>Tuples</h1>
+        <p>A tuple is a data structure made up of comma-separated values. Unlike dictionaries, which are unordered and mutable, tuples are immutable, and their elements maintain the order in which they were added (similar to lists). Tuple elements can be of various data types.</p>
+        <p class="mb-5">Tuples also support built-in sequence functions like len(), min(), and max().</p>
+
+        <h3>Basic Syntax</h3>
+        <p>There are multiple ways to create tuples in Python:</p>
+        <img src="images/tuple/tuplessSyntax.png" alt="" class="imgExample">
+        <p class="mb-5">The built-in tuple() function takes an iterable value, such as a list, and returns a new tuple. Tuples<br> can also be created using just parentheses (or even without parentheses).</p>
+
+        <h3>Packing and Unpacking Tuples</h3>
+        <p>When values are assigned to a tuple, it is considered "packed." Later, when those values are accessed and<br> assigned to individual variables, the tuple is "unpacked."</p>
+        <img src="images/tuple/tuplePackUnpack.png" alt="" class="imgExample mb-5">
+
+        <h3>Accessing and Updating Tuples</h3>
+        <p>Similar to other sequence types in Python, the elements of a tuple can be accessed using their index.</p>
+        <img src="images/tuple/tupleEx1.png" alt="" class="imgExample">
+        <p class="mb-5"><Strong>Output: </Strong>(Peach)</p>
+
+        <img src="images/tuple/tupleEx2.png" alt="" class="imgExample">
+        <p class="mb-5"><Strong>Output: </Strong>(2, 4, 6, 8)</p>
+
+        <img src="images/tuple/tupleEx3.png" alt="" class="imgExample">
+        <p class="mb-5"><Strong>Output: </Strong>(1, 2, 3, 7, 8, 9)</p>
+
+        <h3>Tuple Methods</h3>
+        <ul class="mb-5">
+            <li>.count() - Returns the number of times a specific value appears in a tuple.</li>
+            <li>.index() - Returns the index of the first occurrence of a specified value in a tuple.</li>
+          </ul>
+        
+          <div>
+            <h2>Python Code Editor</h2>
+            <textarea id="code"># Creating a tuple
+fruits = ("apple", "banana", "cherry")
+                
+# Accessing elements
+print(fruits[0])  # Output: apple
+                
+# Tuple unpacking
+a, b, c = fruits
+print(b)  # Output: banana
+                
+# Using len() to find tuple length
+print(len(fruits))  # Output: 3
+                
+# Tuple with mixed data types
+info = ("Alice", 25, True)
+                
+# Checking if an element exists
+print("banana" in fruits)  # Output: True
+                    </textarea>
+                    <br>
+                    <button onclick="runPythonJS()">Run</button>
+                    
+                    <h3>Output:</h3>
+                    <pre id="output"></pre>
+                
+                    <script type="text/python">
+                        from browser import document, console
+                        import sys
+                
+                        def runPython():
+                            code = document["code"].value  # Get code from textarea
+                            output_element = document["output"]
+                            output_element.text = ""  # Clear previous output
+                            
+                            # Redirect output
+                            class OutputRedirect:
+                                def write(self, text):
+                                    output_element.text += text  # Append output
+                            
+                            sys.stdout = OutputRedirect()  # Redirect print() output
+                            sys.stderr = OutputRedirect()  # Redirect error messages
+                            
+                            try:
+                                exec(code, {})  # Execute Python code
+                            except Exception as e:
+                                console.log(str(e))  # Log error in console
+                                output_element.text += "\nError: " + str(e)
+                        
+                        # Expose runPython to JavaScript
+                        from browser import window
+                        window.runPython = runPython
+                    </script>
+                
+                    <script>
+                        function runPythonJS() {
+                            if (window.runPython) {
+                                window.runPython();  // Call the Brython function
+                            } else {
+                                console.error("runPython is not defined. Brython may not have loaded correctly.");
+                            }
+                        }
+                    </script>
+        </div>
+    </div>
+    <a href="index.html" class="btn-back-home">Go Back to Home Page</a>  
+</body>
+</html>

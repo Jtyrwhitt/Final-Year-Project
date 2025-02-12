@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython_stdlib.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+    <title>If Statement</title>
+</head>
+<body onload="brython()">
+    <div class="container">
+        <h1>If Statements</h1>
+        <h3>What are conditionals?</h3>
+        <p class="mb-5">Conditionals evaluate an expression to determine whether it is True or False. If the expression is True, the program executes a specific action; if False, it can follow an alternative path.<br>
+            As programs become more complex, conditionals help handle multiple scenarios, making them more flexible and dynamic.</p>
+        
+        <h3>If Statements</h3>
+        <p>In Python, the if statement controls the execution of code based on a Boolean expression.</p>
+        <ul>
+            <li>If the expression evaluates to True, the indented code beneath the if statement runs.</li>
+            <li>If it evaluates to False, the indented block is skipped, and the program continues executing the next line at the same indentation level as the if statement.</li>
+        </ul>
+        <p>Example:</p>
+        <img src="images/ifStatements/ifStatement.png" alt="" class="imgExample mb-5">
+
+        <h3>Else Statements</h3>
+        <p>The else statement in Python provides an alternative block of code to run when the condition in an if statement evaluates to False.</p>
+        <ul>
+            <li>If the condition is True, the indented code under the if statement executes.</li>
+            <li>If the condition is False, the code under else runs instead.</li>
+        </ul>
+        <p>To properly structure the else block, its code must be indented, and any following statements should be aligned with the original if statement.</p>
+        <img src="images/ifStatements/elseStatement.png" alt="" class="imgExample mb-5">
+
+        <h3>Elif Statement</h3>
+        <p>The elif statement in Python allows for additional conditions to be checked after an initial if statement.<br>Unlike else, which runs only when the if condition is False, elif includes its own expression to evaluate, similar to if.</p>
+        <ul>
+            <li>If the elif condition is True, its indented code executes.</li>
+            <li>If False, the program moves to the next elif or an optional else block.</li>
+        </ul>
+        <p>You can use multiple elif statements to check different conditions. However, once an elif condition evaluates to True, any remaining elif statements are skipped.</p>
+        <img src="images/ifStatements/elIf.png" alt="" class="imgExample mb-5">
+
+        <div>
+            <h2>Python Code Editor</h2>
+            <textarea id="code"># Setting up the variables
+fav_color = "red"           # You can change the value of this to get different statements
+
+if fav_color == "red":                          # if statement for red color
+    print(f"Your favourite color is red!")
+
+elif fav_color == "blue":                       # else if statement for blue color
+    print(f"Your favourite color is blue!")     
+
+else:                                           # else statement for if fav_color isn't red or blue
+    print(f"Your favourite color is {fav_color}!")  
+                    </textarea>
+                    <br>
+                    <button onclick="runPythonJS()">Run</button>
+                    
+                    <h3>Output:</h3>
+                    <pre id="output"></pre>
+                
+                    <script type="text/python">
+                        from browser import document, console
+                        import sys
+                
+                        def runPython():
+                            code = document["code"].value  # Get code from textarea
+                            output_element = document["output"]
+                            output_element.text = ""  # Clear previous output
+                            
+                            # Redirect output
+                            class OutputRedirect:
+                                def write(self, text):
+                                    output_element.text += text  # Append output
+                            
+                            sys.stdout = OutputRedirect()  # Redirect print() output
+                            sys.stderr = OutputRedirect()  # Redirect error messages
+                            
+                            try:
+                                exec(code, {})  # Execute Python code
+                            except Exception as e:
+                                console.log(str(e))  # Log error in console
+                                output_element.text += "\nError: " + str(e)
+                        
+                        # Expose runPython to JavaScript
+                        from browser import window
+                        window.runPython = runPython
+                    </script>
+                
+                    <script>
+                        function runPythonJS() {
+                            if (window.runPython) {
+                                window.runPython();  // Call the Brython function
+                            } else {
+                                console.error("runPython is not defined. Brython may not have loaded correctly.");
+                            }
+                        }
+                    </script>
+        </div>
+    </div>
+    <a href="index.html" class="btn-back-home">Go Back to Home Page</a>  
+</body>
+</html>

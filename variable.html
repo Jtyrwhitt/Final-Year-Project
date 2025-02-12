@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">   
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython_stdlib.min.js"></script>
+    <title>Variables</title>
+</head>
+<body onload="brython()">
+    <div class="container">
+        <h1>Variables</h1>
+        <h3>What is a variable?</h3>
+        <p>A variable is used to store data that will get used in the program. 
+            An variable can consist of a Integer, String, Boolean, Lists and more other data types.
+        </p>
+        <p class="mb-5">An equal sign is used to assign an value to a variable which can be updated after the initial
+            set value to a new value when needed.
+        </p>
+        
+        <h3>Variable Names</h3>
+        <p>The variable name can consist of letters, numbers and a underscore character.</p>
+        <p>Variable naming rules</p>
+        <ul class="mb-5">
+            <li>Variable must start with a letter or underscore character and must not start with a number.</li>
+            <li>Variable can only contain alpha numeric characters and underscores (A-Z, 0-9, _)</li>
+            <LI>Variables are case sensitives </LI>
+        </ul>
+
+        <h3>Variable Types</h3>
+        <ul class="mb-5">
+            <li><strong>Integer (int):</strong> Whole numbers, eg <code>a = 5</code></li>
+            <li><strong>Float (float):</strong> Decimal numbers, eg <code>b = 3.14</code></li>
+            <li><strong>String (str):</strong> Text, eg <code>name = "John"</code></li>
+            <li><strong>Boolean (bool):</strong> True or False, eg <code>is_active = True</code></li>
+        </ul>
+        <h3>Example Usage</h3>
+        <p>Here is an example where we use a few different types of variables in Python:</p>
+        <img src="images/variables/varTypes.png" alt="Picture of variable types" class="imgExample">
+        
+        <p>Here is an example where you reasign the same variable in order to get a different output:</p>
+        <img src="images/variables/varExample2.png" alt="Picture of reasign variables" class="imgExample mb-5">
+
+        <div>
+            <h2>Python Code Editor</h2>
+            <textarea id="code"># Integer variable
+age = 30
+                
+price = 19.99       # Floating point variable
+                
+name = "Alice"      # String variable
+                
+is_student = True       # Boolean variable
+                
+fruits = ["apple", "banana", "cherry"]      # List variable
+                
+coordinates = (10, 20)      # Tuple variable
+                
+person = {"name": "Alice", "age": 30, "city": "New York"}       # Dictionary variable
+                
+unique_numbers = {1, 2, 3, 4, 5}        # Set variable
+                
+data = None             # None variable (default value)
+                
+x, y = 5, "Hello"       # Multiple variable assignment
+                
+# Output all variables
+print(f"Age: {age}")                             # Output: Age: 30
+print(f"Price: ${price}")                        # Output: Price: $19.99
+print(f"Name: {name}")                           # Output: Name: Alice
+print(f"Is student? {is_student}")               # Output: Is student? True
+print(f"Fruits: {fruits}")                       # Output: Fruits: ['apple', 'banana', 'cherry']
+print(f"Coordinates: {coordinates}")             # Output: Coordinates: (10, 20)
+print(f"Person: {person}")                       # Output: Person: {'name': 'Alice', 'age': 30, 'city': 'New York'}
+print(f"Unique numbers: {unique_numbers}")       # Output: Unique numbers: {1, 2, 3, 4, 5}
+print(f"Data: {data}")                           # Output: Data: None
+print(f"x: {x}, y: {y}")                         # Output: x: 5, y: Hello
+                    </textarea>
+                    <br>
+                    <button onclick="runPythonJS()">Run</button>
+                    
+                    <h3>Output:</h3>
+                    <pre id="output"></pre>
+                
+                    <script type="text/python">
+                        from browser import document, console
+                        import sys
+                
+                        def runPython():
+                            code = document["code"].value  # Get code from textarea
+                            output_element = document["output"]
+                            output_element.text = ""  # Clear previous output
+                            
+                            # Redirect output
+                            class OutputRedirect:
+                                def write(self, text):
+                                    output_element.text += text  # Append output
+                            
+                            sys.stdout = OutputRedirect()  # Redirect print() output
+                            sys.stderr = OutputRedirect()  # Redirect error messages
+                            
+                            try:
+                                exec(code, {})  # Execute Python code
+                            except Exception as e:
+                                console.log(str(e))  # Log error in console
+                                output_element.text += "\nError: " + str(e)
+                        
+                        # Expose runPython to JavaScript
+                        from browser import window
+                        window.runPython = runPython
+                    </script>
+                
+                    <script>
+                        function runPythonJS() {
+                            if (window.runPython) {
+                                window.runPython();  // Call the Brython function
+                            } else {
+                                console.error("runPython is not defined. Brython may not have loaded correctly.");
+                            }
+                        }
+                    </script>
+        </div>
+    </div>
+    <a href="index.html" class="btn-back-home">Go Back to Home Page</a>       
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython_stdlib.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+    <title>Enum</title>
+</head>
+<body onload="brython()">
+    <div class="container">
+        <h1>Enum</h1>
+        <p class="mb-5">An Enum (short for enumeration) in Python is a class used to define a collection of named, immutable constants. Enums enhance code clarity and maintainability by replacing arbitrary numbers or strings with descriptive names.</p>    
+        
+        <h3>Basic Syntax</h3>
+        <img src="images/enum/enumSyntax.png" alt="" class="imgExample">
+        <ul class="mb-5">
+            <li><strong>EnumName</strong>: The name of the enum class.</li>
+            <li><strong>MEMBER1, MEMBER2</strong>: Names of the constants.</li>
+            <li><strong>value1, value2</strong>: Values assigned to the constants (e.g. numbers or strings).</li>
+        </ul>
+
+        <h3>Enum Module</h3>
+        <p>The enum module offers the Enum class to create enumerations. Additionally, it contains:</p>
+        <ul>
+            <li>IntEnum: Ensures that the values of the enumeration are integers.</li>
+            <li>Flag: Allows combining constants with bitwise operations.</li>
+            <li>Auto: Automatically assigns values to the enumeration members.</li>
+          </ul>
+        <p>Enums also provide methods like:</p>    
+        <ul class="mb-5">
+            <li>.name: Returns the name of the enum member (as a string).</li>
+            <li>.value: Returns the value assigned to the enum member.</li>
+        </ul>      
+
+        <h3>Examples</h3>
+        <p>In this example, an enumeration called Colors is defined with three color names (RED, GREEN, BLUE). The script accesses and prints the name and value of RED and then iterates over the members of the Colors enumeration.</p>
+        <img src="images/enum/enumEx.png" alt="" class="imgExample">
+        <p><strong>Output: </strong>Colors.RED</p>
+        <p><strong>Output: </strong>RED</p>
+        <p><strong>Output: </strong>red</p>
+        <p><strong>Output: </strong>Colors.RED</p>
+        <p><strong>Output: </strong>Colors.GREEN</p>
+        <p class="mb-5"><strong>Output: </strong>Colors.BLUE</p>
+
+        <div>
+            <h2>Python Code Editor</h2>
+            <textarea id="code">from enum import Enum
+# Define an enumeration
+class Day(Enum):
+    SUNDAY = 1
+    MONDAY = 2
+    TUESDAY = 3
+    WEDNESDAY = 4
+    THURSDAY = 5
+    FRIDAY = 6
+    SATURDAY = 7
+               
+# Accessing enum members
+print(Day.MONDAY)       # Output: Day.MONDAY
+print(Day.MONDAY.name)  # Output: MONDAY
+print(Day.MONDAY.value) # Output: 2
+                
+# Iterating through enum members
+for day in Day:
+    print(day.name, "=", day.value)
+                    </textarea>
+                    <br>
+                    <button onclick="runPythonJS()">Run</button>
+                    
+                    <h3>Output:</h3>
+                    <pre id="output"></pre>
+                
+                    <script type="text/python">
+                        from browser import document, console
+                        import sys
+                
+                        def runPython():
+                            code = document["code"].value  # Get code from textarea
+                            output_element = document["output"]
+                            output_element.text = ""  # Clear previous output
+                            
+                            # Redirect output
+                            class OutputRedirect:
+                                def write(self, text):
+                                    output_element.text += text  # Append output
+                            
+                            sys.stdout = OutputRedirect()  # Redirect print() output
+                            sys.stderr = OutputRedirect()  # Redirect error messages
+                            
+                            try:
+                                exec(code, {})  # Execute Python code
+                            except Exception as e:
+                                console.log(str(e))  # Log error in console
+                                output_element.text += "\nError: " + str(e)
+                        
+                        # Expose runPython to JavaScript
+                        from browser import window
+                        window.runPython = runPython
+                    </script>
+                
+                    <script>
+                        function runPythonJS() {
+                            if (window.runPython) {
+                                window.runPython();  // Call the Brython function
+                            } else {
+                                console.error("runPython is not defined. Brython may not have loaded correctly.");
+                            }
+                        }
+                    </script>
+        </div>
+    </div>
+    <a href="index.html" class="btn-back-home">Go Back to Home Page</a>  
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython_stdlib.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+    <title>Logical Operators</title>
+</head>
+<body onload="brython()">
+    <div class="container">
+        <h1>Logical Operators</h1>
+        <p>Python provides the following logical operators:</p>
+        <ul>
+            <li><strong>and</strong> returns <strong>True</strong> only if both conditions are <strong>True</strong>.</li>
+            <li><strong>or</strong> returns <strong>True</strong> if at least one of the conditions is <strong>True</strong>.</li>
+            <li><strong>not</strong> returns <strong>True</strong> when the given condition is <strong>False</strong>.</li>
+        </ul>
+        <p>The example below illustrates how logical operators work in Python:</p>
+        <img src="images/logicalOperator/logicalOper.png" alt="" class="imgExample mb-5">
+
+        <h3>Assignment Operators</h3>
+        <p>Python provides the following assignment operators:</p>
+        <ul>
+            <li>= assigns the value on the right to the variable on the left.</li>
+            <li>+= increases a variable's value by a specified amount and reassigns it.</li>
+            <li>-= decreases a variable's value by a specified amount and reassigns it.</li>
+            <li>*= multiplies a variable's value by a specified amount and reassigns it.</li>
+            <li>/= divides a variable's value by a specified amount and reassigns it.</li>
+            <li>%= calculates the remainder when dividing a variable's value by a specified number and reassigns it.</li>
+        </ul>
+        <p>The following example demonstrates how assignment operators work in Python:</p>
+        <img src="images/logicalOperator/assignmentOperators.png" alt="" class="imgExample mb-5">
+
+        <h3>Comparison Operators</h3>
+        <p>Python includes the following comparison operators:</p>
+        <ul>
+            <li>== (Equal): Returns True if both values are the same.</li>
+            <li>!= (Not Equal): Returns True if the values are different.</li>
+            <li>< (Less Than): Returns True if the left value is smaller than the right value.</li>
+            <li><= (Less Than or Equal To): Returns True if the left value is smaller than or equal to the right value.</li>
+            <li>> (Greater Than): Returns True if the left value is larger than the right value.</li>
+            <li>>= (Greater Than or Equal To): Returns True if the left value is larger than or equal to the right value.</li>
+        </ul>
+        <p>The following example demonstrates how to use comparison operators in Python:</p>
+        <img src="images/logicalOperator/comparisonOperators.png" alt="" class="imgExample mb-5">
+
+        <div>
+            <h2>Python Code Editor</h2>
+            <textarea id="code"># Initial values
+x = 10
+y = 20
+z = 5
+                
+# Comparison Operators:
+print("Comparison Operators:")
+print(x == y)  # Equal to, Output: False
+print(x != y)  # Not equal to, Output: True
+print(x > y)   # Greater than, Output: False
+print(x < y)   # Less than, Output: True
+print(x >= y)  # Greater than or equal to, Output: False
+print(x <= y)  # Less than or equal to, Output: True
+print()
+                
+# Assignment Operators:
+print("Assignment Operators:")
+x += 3  # x = x + 3
+print(f"x += 3: {x}")  # Output: 13
+                
+y -= 2  # y = y - 2
+print(f"y -= 2: {y}")  # Output: 18
+                
+x *= 2  # x = x * 2
+print(f"x *= 2: {x}")  # Output: 26
+                
+y /= 4  # y = y / 4
+print(f"y /= 4: {y}")  # Output: 4.5
+print()
+                
+# Logical Operators:
+print("Logical Operators:")
+print(x > y and y > z)  # AND operator, Output: True (both conditions are True)
+print(x > y or y > z)   # OR operator, Output: True (at least one condition is True)
+print(not(x > y))       # NOT operator, Output: False (x > y is True, so NOT becomes False)
+</textarea>
+                    <br>
+                    <button onclick="runPythonJS()">Run</button>
+                    
+                    <h3>Output:</h3>
+                    <pre id="output"></pre>
+                
+                    <script type="text/python">
+                        from browser import document, console
+                        import sys
+                
+                        def runPython():
+                            code = document["code"].value  # Get code from textarea
+                            output_element = document["output"]
+                            output_element.text = ""  # Clear previous output
+                            
+                            # Redirect output
+                            class OutputRedirect:
+                                def write(self, text):
+                                    output_element.text += text  # Append output
+                            
+                            sys.stdout = OutputRedirect()  # Redirect print() output
+                            sys.stderr = OutputRedirect()  # Redirect error messages
+                            
+                            try:
+                                exec(code, {})  # Execute Python code
+                            except Exception as e:
+                                console.log(str(e))  # Log error in console
+                                output_element.text += "\nError: " + str(e)
+                        
+                        # Expose runPython to JavaScript
+                        from browser import window
+                        window.runPython = runPython
+                    </script>
+                
+                    <script>
+                        function runPythonJS() {
+                            if (window.runPython) {
+                                window.runPython();  // Call the Brython function
+                            } else {
+                                console.error("runPython is not defined. Brython may not have loaded correctly.");
+                            }
+                        }
+                    </script>
+        </div>
+
+    </div>
+    
+    <a href="index.html" class="btn-back-home">Go Back to Home Page</a>  
+</body>
+</html>

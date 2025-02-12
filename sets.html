@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython_stdlib.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+    <title>Sets</title>
+</head>
+<body onload="brython()">
+    <div class="container">
+        <h1>Sets</h1>
+        <p>A set is an unordered collection of elements without any duplicates.</p>
+        <p class="mb-5">Sets are particularly valuable for performing logical operations such as finding the union, intersection, or difference between groups of elements. For instance, sets can be used to identify mutual friends on a social networking platform.</p>
+
+        <h3>Basic Syntax</h3>
+        <img src="images/sets/setsSyntax.png" alt="" class="imgExample">
+        <p>There are several ways to create a set, which include:</p>
+        <ul class="mb-5">
+            <li>Using the built-in set() function and passing in an optional iterable parameter.</li>
+            <li>Hard-coding a set with dictionary-like syntax ({}) where each element is unique.</li>
+        </ul>
+
+        <h3>Example</h3>
+        <img src="images/sets/setsEx1.png" alt="" class="imgExample">
+        <p><strong>Output: </strong>Groceries: {'carrots', 'apples', 'bananas'}</p>
+        <p><strong>Output: </strong>Fruits: {'apple', 'cherry', 'date', 'elderberry'}</p>
+        <p class="mb-5"><strong>Output: </strong>Vegetables: {'spinach', 'onion', 'carrot', 'lettuce', potato}</p>
+
+        <h3>Sets Methods</h3>
+        <ul class="mb-5">
+            <li><strong>.add()</strong> - Adds a specified single element to a set.</li>
+            <li><strong>.clear()</strong> - Removes all elements from a set.</li>
+            <li><strong>.copy()</strong> - Returns a shallow copy of a specified set.</li>
+            <li><strong>.difference()</strong> - Returns a new set of objects unique to a given set when compared to others.</li>
+            <li><strong>.difference_update()</strong> - Modifies a set by removing all elements present in another set.</li>
+            <li><strong>.discard()</strong> - Removes a specified element from a set.</li>
+            <li><strong>.intersection()</strong> - Returns a new set with objects that exist inside two or more sets.</li>
+            <li><strong>.isdisjoint()</strong> - Checks whether two sets contain a common element in them.</li>
+            <li><strong>.issubset()</strong> - Checks whether all elements in one set exist within another specified set.</li>
+            <li><strong>.issuperset()</strong> - Checks whether all elements of the specified set exist in the original set.</li>
+            <li><strong>.pop()</strong> - Removes and returns a randomly chosen element from a set.</li>
+            <li><strong>.remove()</strong> - Removes the specified element from a set.</li>
+            <li><strong>.symmetric_difference()</strong> - Returns elements that occur in either of the two sets but not in both.</li>
+            <li><strong>.symmetric_difference_update()</strong> - Updates the original set by removing items present in both sets and adding items unique to each set.</li>
+            <li><strong>.union()</strong> - Returns a new set that combines objects from all sets involved, removing any duplicates.</li>
+            <li><strong>.update()</strong> - Updates the original set by adding elements from another set.</li>
+            <li><strong>.frozenset()</strong> - Returns a new set or frozenset object whose elements are picked from a given iterable.</li>
+        </ul>
+        <div>
+            <h2>Python Code Editor</h2>
+            <textarea id="code"># Creating sets
+fruits = {"apple", "banana", "cherry"}
+numbers = set([1, 2, 3, 4, 5])
+            
+# Adding elements
+fruits.add("orange")
+            
+# Removing elements
+fruits.remove("banana")  # Raises an error if element is not found
+fruits.discard("banana")  # Does not raise an error if element is not found
+            
+# Set operations
+even_numbers = {2, 4, 6, 8}
+odd_numbers = {1, 3, 5, 7}
+all_numbers = even_numbers.union(odd_numbers)  # Combines both sets
+common = even_numbers.intersection(numbers)  # Finds common elements
+difference = numbers.difference(even_numbers)  # Elements in numbers but not in even_numbers
+            
+# Checking membership
+print("apple" in fruits)  # Output: True
+            
+# Printing results
+print(fruits)  # Output: {'apple', 'cherry', 'orange'}
+print(all_numbers)  # Output: {1, 2, 3, 4, 5, 6, 7, 8}
+print(common)  # Output: {2, 4}
+print(difference)  # Output: {1, 3, 5}
+                </textarea>
+                <br>
+                <button onclick="runPythonJS()">Run</button>
+                
+                <h3>Output:</h3>
+                <pre id="output"></pre>
+            
+                <script type="text/python">
+                    from browser import document, console
+                    import sys
+            
+                    def runPython():
+                        code = document["code"].value  # Get code from textarea
+                        output_element = document["output"]
+                        output_element.text = ""  # Clear previous output
+                        
+                        # Redirect output
+                        class OutputRedirect:
+                            def write(self, text):
+                                output_element.text += text  # Append output
+                        
+                        sys.stdout = OutputRedirect()  # Redirect print() output
+                        sys.stderr = OutputRedirect()  # Redirect error messages
+                        
+                        try:
+                            exec(code, {})  # Execute Python code
+                        except Exception as e:
+                            console.log(str(e))  # Log error in console
+                            output_element.text += "\nError: " + str(e)
+                    
+                    # Expose runPython to JavaScript
+                    from browser import window
+                    window.runPython = runPython
+                </script>
+            
+                <script>
+                    function runPythonJS() {
+                        if (window.runPython) {
+                            window.runPython();  // Call the Brython function
+                        } else {
+                            console.error("runPython is not defined. Brython may not have loaded correctly.");
+                        }
+                    }
+                </script>
+        </div>
+    </div>
+    <a href="index.html" class="btn-back-home">Go Back to Home Page</a>  
+</body>
+</html>

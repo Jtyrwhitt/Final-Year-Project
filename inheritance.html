@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython_stdlib.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+    <title>Inheritance</title>
+</head>
+<body onload="brython()">
+    <div class="container">
+        <h1>Inheritance</h1>
+        <p>Inheritance is a fundamental concept in object-oriented programming where a subclass (child class) inherits attributes and behaviors from a parent class.</p>
+        <p>This allows a subclass (or child class) to reuse the attributes and methods of a parent class, eliminating the need for redundant implementation. In real-world terms, it represents an "IS-A" relationship.</p>
+        <img src="images/inheritance/inheritanceEx1.png" alt="" class="imgExample">
+        <p class="mb-5">This example shows how the Car class inherits from the Vehicle class, allowing it to reuse the brand attribute.</p>
+
+        <h3>Overriding Methods</h3>
+        <p>In a child class, a method from the parent class is overridden when a method with the same name is defined within the child class.</p>
+        <img src="images/inheritance/overideMethod.png" alt="" class="imgExample mb-5">
+
+        <h3>Private Variables</h3>
+        <p class="mb-5">If instance variables from the parent class should not be inherited by the child class, they can be made inaccessible by prefixing them with double underscores (__). This applies name mangling, which renames the variable by appending _ClassName before it. Attempting to access such variables directly from the child class will result in an “AttributeError.”</p>
+
+        <h3>isinstance() and issubclass()</h3>
+        <p>Python has two built-in functions that work with inheritance:</p>
+        <ul>
+            <li>isinstance()</li>
+            <li>issubclass()</li>
+        </ul>
+        <p>isinstance() checks an instance's type:</p>
+        <p>isinstance(obj, int)</p>
+        
+        <p>This will return True only if obj is an instance of the int class or any class that inherits from int.</p>
+
+        <p>issubclass() checks class inheritance:</p>
+        <p>print(issubclass(bool, int))   # True</p>
+        <p>print(issubclass(float, int))  # False</p>
+        <p class="mb-5">Because bool is a subclass of int, the result is True. On the other hand, since float is not a subclass of int, it returns False.</p>
+
+        <h3>Types of Inheritance</h3>
+        <h4>Single Inheritance</h4>
+        <p class="mb-5">Single inheritance occurs when a child class inherits from only one parent class. All the previous code examples demonstrate<br> single inheritance.</p>
+
+        <h4>Multiple Inheritance</h4>
+        <p>When a child class inherits from multiple parent classes, it is called multiple inheritance.</p>
+        <img src="images/inheritance/inheritanceMultiple.png" alt="" class="imgExample">
+
+        <p class="mb-5"><strong>Output: </strong> Hello! I am Leo, a Panthera leo living in the Savannah.</p>
+
+        <h4>Multilevel Inheritance</h4>
+        <p>When a derived class inherits from another derived class.</p>
+        <img src="images/inheritance/inheritanceMultilevel.png" alt="" class="imgExample">
+        <p class="mb-5"><strong>Output: </strong> Tesla Model S - 2022 - Battery: 100 kWh</p>
+
+        <h4>Hierarchical Inheritance</h4>
+        <p>More than one derived class is created from a single base class:</p>
+        <img src="images/inheritance/hierarchicalInheritance.png" alt="" class="imgExample">
+        <p><strong>Output: </strong> Language: C, Popularity: High</p>
+        <p class="mb-5"><strong>Output: </strong> Language: Ruby, Popularity: Medium</p>
+
+        <div>
+            <h2>Python Code Editor</h2>
+            <textarea id="code">class Animal:
+    def __init__(self, name):
+        self.name = name
+            
+def speak(self):
+    return "I make a sound"
+            
+# Child class (inherits from Animal)
+class Dog(Animal):
+    def speak(self):  # Overriding the parent method
+        return "Woof!"
+            
+# Another child class
+class Cat(Animal):
+    def speak(self):  # Overriding the parent method
+        return "Meow!"
+            
+# Creating objects
+dog = Dog("Buddy")
+cat = Cat("Whiskers")
+            
+# Calling methods
+print(dog.name, "says:", dog.speak())  # Output: Buddy says: Woof!
+print(cat.name, "says:", cat.speak())  # Output: Whiskers says: Meow!
+
+                    </textarea>
+                    <br>
+                    <button onclick="runPythonJS()">Run</button>
+                    
+                    <h3>Output:</h3>
+                    <pre id="output"></pre>
+                
+                    <script type="text/python">
+                        from browser import document, console
+                        import sys
+                
+                        def runPython():
+                            code = document["code"].value  # Get code from textarea
+                            output_element = document["output"]
+                            output_element.text = ""  # Clear previous output
+                            
+                            # Redirect output
+                            class OutputRedirect:
+                                def write(self, text):
+                                    output_element.text += text  # Append output
+                            
+                            sys.stdout = OutputRedirect()  # Redirect print() output
+                            sys.stderr = OutputRedirect()  # Redirect error messages
+                            
+                            try:
+                                exec(code, {})  # Execute Python code
+                            except Exception as e:
+                                console.log(str(e))  # Log error in console
+                                output_element.text += "\nError: " + str(e)
+                        
+                        # Expose runPython to JavaScript
+                        from browser import window
+                        window.runPython = runPython
+                    </script>
+                
+                    <script>
+                        function runPythonJS() {
+                            if (window.runPython) {
+                                window.runPython();  // Call the Brython function
+                            } else {
+                                console.error("runPython is not defined. Brython may not have loaded correctly.");
+                            }
+                        }
+                    </script>
+        </div>
+    </div>
+    <a href="index.html" class="btn-back-home">Go Back to Home Page</a>  
+</body>
+</html>

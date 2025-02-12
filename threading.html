@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython_stdlib.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+    <title>Threading</title>
+</head>
+<body onload="brython()">
+    <div class="container">
+        <h1>Threading</h1>
+        <p>The threading module enables concurrent execution of multiple threads within a Python program.</p>
+        <p>Although threads may seem to run at the same time, only one thread is actually executed at any given moment due to Python's Global Interpreter Lock (GIL).</p>
+        <p class="mb-5">Threading is particularly useful for I/O-bound tasks, such as web scraping or file downloading, where operations often wait for external resources.</p>
+    
+        <h3>Basic Syntax</h3>
+        <p>import threading</p>
+        <p>The threading module must first be imported before thread constants can be created and their methods can be used.</p>
+        <img src="images/threading/threadSyntax.png" alt="" class="imgExample mb-5">
+
+        <h3>Example</h3>
+        <img src="images/threading/threadEx.png" alt="" class="imgExample">
+        <p><strong>Output: </strong> Thread 0 finished task: Task A!</p>
+        <p><strong>Output: </strong> Thread 1 finished task: Task B!</p>
+        <p><strong>Output: </strong> Thread 3 finished task: Task D!</p>
+        <p><strong>Output: </strong> Thread 4 finished task: Task E!</p>
+        <p><strong>Output: </strong> Thread 2 finished task: Task C!</p>
+        <p class="mb-5"><strong>Output: </strong> All tasks have been processed.</p>
+
+        <h3>Threading Methods</h3>
+        <ul class="mb-5">
+            <li><strong>.is_alive()</strong> - Returns True if the thread is currently running, otherwise False.</li>
+            <li><strong>.join()</strong> - Pauses the main program flow until the target thread has finished its execution.</li>
+            <li><strong>.local()</strong> - Returns a thread-local object, which stores data specific to that thread.</li>
+            <li><strong>.run()</strong> - Executes the function defined as the target of the thread.</li>
+            <li><strong>.start()</strong> - Starts the execution of a thread, making it run the target function.</li>
+            <li><strong>.Thread()</strong> - Creates a thread object that can execute a target function, with zero or more arguments.</li>
+        </ul>
+
+        <div>
+            <h2>Python Code Editor</h2>
+            <textarea id="code">import threading
+def print_numbers():
+    for i in range(1, 6):
+        print(i)
+                
+# Creating a thread
+thread = threading.Thread(target=print_numbers)
+                
+# Starting the thread
+thread.start()
+                
+# Waiting for the thread to finish
+thread.join()
+                
+print("Thread execution completed!")
+
+                    </textarea>
+                    <br>
+                    <button onclick="runPythonJS()">Run</button>
+                    
+                    <h3>Output:</h3>
+                    <pre id="output"></pre>
+                
+                    <script type="text/python">
+                        from browser import document, console
+                        import sys
+                
+                        def runPython():
+                            code = document["code"].value  # Get code from textarea
+                            output_element = document["output"]
+                            output_element.text = ""  # Clear previous output
+                            
+                            # Redirect output
+                            class OutputRedirect:
+                                def write(self, text):
+                                    output_element.text += text  # Append output
+                            
+                            sys.stdout = OutputRedirect()  # Redirect print() output
+                            sys.stderr = OutputRedirect()  # Redirect error messages
+                            
+                            try:
+                                exec(code, {})  # Execute Python code
+                            except Exception as e:
+                                console.log(str(e))  # Log error in console
+                                output_element.text += "\nError: " + str(e)
+                        
+                        # Expose runPython to JavaScript
+                        from browser import window
+                        window.runPython = runPython
+                    </script>
+                
+                    <script>
+                        function runPythonJS() {
+                            if (window.runPython) {
+                                window.runPython();  // Call the Brython function
+                            } else {
+                                console.error("runPython is not defined. Brython may not have loaded correctly.");
+                            }
+                        }
+                    </script>
+        </div>
+    </div>
+    <a href="index.html" class="btn-back-home">Go Back to Home Page</a>  
+</body>
+</html>

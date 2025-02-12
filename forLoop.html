@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython_stdlib.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+    <title>For Loop</title>
+</head>
+<body onload="brython()">
+    <div class="container">
+        <h1>For Loop</h1>
+        <p>A for loop can be used to iterate through a list and perform an action for each element one by one.</p>
+        <p>The correct syntax for a for loop assigns the current element of the list to a variable during each iteration.</p>
+        <p>Basic syntax for a for loop:</p>
+        <pre>
+            for (temporary value) in (a list):
+                # Code block
+            </pre>
+        
+        <p>Full example of a for loop iterating through different foods</p>
+        <img src="images/forLoop/forLoopEx1.png" alt="" class="imgExample mb-5">
+
+        <h3>Nested Loop</h3>
+        <p>Loops can be placed inside other loops, which is known as nesting. Nested loops are useful for accessing<br>
+             elements within lists that are themselves contained in other lists. The item selected by the outer loop can<br> be used as the list for the inner loop to iterate over.</p>
+        <img src="images/forLoop/nestedLoop.png" alt="" class="imgExample mb-5">
+
+        <h3>Important Keywords</h3>
+        <ul class="mb-5">
+            <li>The <strong>break</strong> keyword in a loop terminates the loop immediately, no matter which iteration the loop is on. After the break is executed, the program continues with the code that follows the loop.</li>
+            <li>The <strong>continue</strong> keyword is used within a loop to skip the remaining code in the current iteration and move on to the next iteration of the loop.</li>
+            <li>The <strong>pass</strong> keyword serves as a placeholder, allowing empty loops, functions, or classes to be included in the code without causing an error. It is often used when planning future implementations.</li>
+        </ul>
+
+        <div>
+            <h2>Python Code Editor</h2>
+            <textarea id="code"># Print numbers from 1 to 5 using a for loop
+for i in range(1, 6):
+    print(i)        # prints i
+
+                    </textarea>
+                    <br>
+                    <button onclick="runPythonJS()">Run</button>
+                    
+                    <h3>Output:</h3>
+                    <pre id="output"></pre>
+                
+                    <script type="text/python">
+                        from browser import document, console
+                        import sys
+                
+                        def runPython():
+                            code = document["code"].value  # Get code from textarea
+                            output_element = document["output"]
+                            output_element.text = ""  # Clear previous output
+                            
+                            # Redirect output
+                            class OutputRedirect:
+                                def write(self, text):
+                                    output_element.text += text  # Append output
+                            
+                            sys.stdout = OutputRedirect()  # Redirect print() output
+                            sys.stderr = OutputRedirect()  # Redirect error messages
+                            
+                            try:
+                                exec(code, {})  # Execute Python code
+                            except Exception as e:
+                                console.log(str(e))  # Log error in console
+                                output_element.text += "\nError: " + str(e)
+                        
+                        # Expose runPython to JavaScript
+                        from browser import window
+                        window.runPython = runPython
+                    </script>
+                
+                    <script>
+                        function runPythonJS() {
+                            if (window.runPython) {
+                                window.runPython();  // Call the Brython function
+                            } else {
+                                console.error("runPython is not defined. Brython may not have loaded correctly.");
+                            }
+                        }
+                    </script>
+        </div>
+    </div>
+    <a href="index.html" class="btn-back-home">Go Back to Home Page</a>  
+</body>
+</html>
