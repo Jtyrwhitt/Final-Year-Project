@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../styles.css" rel="stylesheet">
+    <title>Modules Quiz</title>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../index.html">Python Tool</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="conceptDropdown" role="button" data-bs-toggle="dropdown">
+                Python Concepts
+              </a>
+              <ul class="dropdown-menu p-3" aria-labelledby="conceptDropdown">
+                <a class="dropdown-item" href="../builtFunction.html">Built In Functions</a>
+                <a class="dropdown-item" href="../comments.html">Comments</a>
+                <a class="dropdown-item" href="../deque.html">Deque</a>
+                <a class="dropdown-item" href="../dictionaries.html">Dictionaries</a>
+                <a class="dropdown-item" href="../enum.html">Enum</a>
+                <a class="dropdown-item " href="../forLoop.html">For Loop</a>
+                <a class="dropdown-item" href="../function.html">Functions</a>
+                <a class="dropdown-item" href="../ifStatement.html">If Statement</a>
+                <a class="dropdown-item active" href="../modules.html">Import Modules</a>
+                <a class="dropdown-item" href="../inheritance.html">Inheritance</a>
+                <a class="dropdown-item" href="../lists.html">Lists</a>
+                <a class="dropdown-item" href="../logicalOperator.html">Logical Operator</a>
+                <a class="dropdown-item" href="../mathOperator.html">Mathematical Operators</a>
+                <a class="dropdown-item" href="../printStatement.html">Print Statement</a>
+                <a class="dropdown-item" href="../recursion.html">Recursion</a>
+                <a class="dropdown-item" href="../sets.html">Sets</a>
+                <a class="dropdown-item" href="../error.html">Syntax, Runtime, Logic Errors</a>
+                <a class="dropdown-item" href="../threading.html">Threading</a>
+                <a class="dropdown-item" href="../tuples.html">Tuples</a>
+                <a class="dropdown-item" href="../variable.html">Variables</a>
+                <a class="dropdown-item" href="../whileLoop.html">While Loop</a>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</head>
+<body>
+    <div class="container my-5">
+        <h1>Modules Quiz</h1>
+        <form id="quizForm">
+    
+          <div class="mb-4" id="q1">
+            <label><strong>1. What is a module in Python?</strong></label><br>
+            <input type="radio" name="q1" value="A"> A. A built-in error handler<br>
+            <input type="radio" name="q1" value="B"> B. A file containing reusable code, functions, and variables<br>
+            <input type="radio" name="q1" value="C"> C. A folder that stores all Python projects<br>
+            <input type="radio" name="q1" value="D"> D. An HTML parser<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <div class="mb-4" id="q2">
+            <label><strong>2. How do you import everything from a module named <code>mymodule</code>?</strong></label><br>
+            <input type="radio" name="q2" value="A"> A. include mymodule<br>
+            <input type="radio" name="q2" value="B"> B. from mymodule import all<br>
+            <input type="radio" name="q2" value="C"> C. mymodule import *<br>
+            <input type="radio" name="q2" value="D"> D. import mymodule<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <div class="mb-4" id="q3">
+            <label><strong>3. What is the purpose of the <code>as</code> keyword when importing a module?</strong></label><br>
+            <input type="radio" name="q3" value="A"> A. It allows using the module in uppercase only<br>
+            <input type="radio" name="q3" value="B"> B. It is required when importing standard libraries<br>
+            <input type="radio" name="q3" value="C"> C. It sets an alias for the module<br>
+            <input type="radio" name="q3" value="D"> D. It lets you edit the module’s source code<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <div class="mb-4" id="q4">
+            <label><strong>4. Which of the following imports only the <code>reptiles</code> class from the <code>animal</code> module?</strong></label><br>
+            <input type="radio" name="q4" value="A"> A. import animal<br>
+            <input type="radio" name="q4" value="B"> B. import reptiles from animal<br>
+            <input type="radio" name="q4" value="C"> C. from animal import reptiles<br>
+            <input type="radio" name="q4" value="D"> D. include reptiles<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <div class="mb-4" id="q5">
+            <label><strong>5. Why might you use specific imports instead of importing an entire module?</strong></label><br>
+            <input type="radio" name="q5" value="A"> A. To reduce namespace clutter and improve performance<br>
+            <input type="radio" name="q5" value="B"> B. To make your program run slower<br>
+            <input type="radio" name="q5" value="C"> C. Because full imports are deprecated<br>
+            <input type="radio" name="q5" value="D"> D. To avoid needing the Python interpreter<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <div class="mb-4" id="q6">
+            <label><strong>6. Which module would you import for working with JSON data?</strong></label><br>
+            <input type="radio" name="q6" value="A"> A. math<br>
+            <input type="radio" name="q6" value="B"> B. json<br>
+            <input type="radio" name="q6" value="C"> C. glob<br>
+            <input type="radio" name="q6" value="D"> D. random<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <button type="button" class="btn btn-primary" onclick="checkAnswers()">Submit Quiz</button>
+          <div id="result" class="mt-4 fw-bold"></div>
+        </form>
+    
+        <div class="d-flex justify-content-end mt-4">
+          <a href="../modules.html" class="btn btn-secondary me-3">Go Back</a>
+          <a href="../whileLoop.html" class="btn btn-secondary">Next Python Concept</a>
+        </div>
+      </div>
+    
+      <script>
+        function checkAnswers() {
+          const answers = {
+            q1: "B",
+            q2: "D",
+            q3: "C",
+            q4: "C",
+            q5: "A",
+            q6: "B"
+          };
+    
+          const explanations = {
+            q1: "A module is a .py file that contains reusable code.",
+            q2: "'import mymodule' brings in everything from that module.",
+            q3: "'as' lets you assign an alias to the module for easier use.",
+            q4: "'from animal import reptiles' imports only that class.",
+            q5: "Specific imports improve efficiency and reduce namespace clutter.",
+            q6: "The 'json' module provides tools to work with JSON data."
+          };
+    
+          let score = 0;
+          let unanswered = false;
+    
+          for (let q in answers) {
+            const selected = document.querySelector(`input[name="${q}"]:checked`);
+            const feedback = document.querySelector(`#${q} .feedback`);
+            if (selected) {
+              if (selected.value === answers[q]) {
+                feedback.textContent = "Correct!";
+                feedback.style.color = "green";
+                score++;
+              } else {
+                feedback.textContent = `Incorrect. ${explanations[q]}`;
+                feedback.style.color = "red";
+              }
+            } else {
+              feedback.textContent = "You did not answer this question.";
+              feedback.style.color = "orange";
+              unanswered = true;
+            }
+          }
+    
+          if (unanswered) {
+            alert("You have unanswered questions. Please answer all questions before submitting.");
+          }
+    
+          document.getElementById("result").textContent = `You scored ${score} out of 6.`;
+        }
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

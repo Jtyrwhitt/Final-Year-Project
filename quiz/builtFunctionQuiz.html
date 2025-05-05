@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../styles.css" rel="stylesheet">
+    <title>Build in Functions Quiz</title>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../index.html">Python Tool</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="conceptDropdown" role="button" data-bs-toggle="dropdown">
+                Python Concepts
+              </a>
+              <ul class="dropdown-menu p-3" aria-labelledby="conceptDropdown">
+                <a class="dropdown-item active" href="../builtFunction.html">Built In Functions</a>
+                <a class="dropdown-item" href="../comments.html">Comments</a>
+                <a class="dropdown-item" href="../deque.html">Deque</a>
+                <a class="dropdown-item" href="../dictionaries.html">Dictionaries</a>
+                <a class="dropdown-item" href="../enum.html">Enum</a>
+                <a class="dropdown-item" href="../forLoop.html">For Loop</a>
+                <a class="dropdown-item" href="../function.html">Functions</a>
+                <a class="dropdown-item" href="../ifStatement.html">If Statement</a>
+                <a class="dropdown-item" href="../modules.html">Import Modules</a>
+                <a class="dropdown-item" href="../inheritance.html">Inheritance</a>
+                <a class="dropdown-item" href="../lists.html">Lists</a>
+                <a class="dropdown-item" href="../logicalOperator.html">Logical Operator</a>
+                <a class="dropdown-item" href="../mathOperator.html">Mathematical Operators</a>
+                <a class="dropdown-item" href="../printStatement.html">Print Statement</a>
+                <a class="dropdown-item" href="../recursion.html">Recursion</a>
+                <a class="dropdown-item" href="../sets.html">Sets</a>
+                <a class="dropdown-item" href="../error.html">Syntax, Runtime, Logic Errors</a>
+                <a class="dropdown-item" href="../threading.html">Threading</a>
+                <a class="dropdown-item" href="../tuples.html">Tuples</a>
+                <a class="dropdown-item" href="../variable.html">Variables</a>
+                <a class="dropdown-item" href="../whileLoop.html">While Loop</a>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</head>
+<body>
+    <div class="container my-5">
+        <h1>Built-in Functions Quiz</h1>
+        <form id="quizForm">
+          
+          <div class="mb-4" id="q1">
+            <label><strong>1. What does the <code>len()</code> function return in Python?</strong></label><br>
+            <input type="radio" name="q1" value="A"> A. The number of characters in a variable name<br>
+            <input type="radio" name="q1" value="B"> B. The total memory used by an object<br>
+            <input type="radio" name="q1" value="C"> C. The length (number of items) of an object<br>
+            <input type="radio" name="q1" value="D"> D. The type of a variable<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <div class="mb-4" id="q2">
+            <label><strong>2. Which function is used to take input from a user?</strong></label><br>
+            <input type="radio" name="q2" value="A"> A. read()<br>
+            <input type="radio" name="q2" value="B"> B. input()<br>
+            <input type="radio" name="q2" value="C"> C. get()<br>
+            <input type="radio" name="q2" value="D"> D. fetch()<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <div class="mb-4" id="q3">
+            <label><strong>3. What is the output of <code>print(abs(-10))</code>?</strong></label><br>
+            <input type="radio" name="q3" value="A"> A. -10<br>
+            <input type="radio" name="q3" value="B"> B. Error<br>
+            <input type="radio" name="q3" value="C"> C. 0<br>
+            <input type="radio" name="q3" value="D"> D. 10<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <div class="mb-4" id="q4">
+            <label><strong>4. What does the <code>sorted()</code> function return?</strong></label><br>
+            <input type="radio" name="q4" value="A"> A. A list sorted in descending order only<br>
+            <input type="radio" name="q4" value="B"> B. The reversed list<br>
+            <input type="radio" name="q4" value="C"> C. A sorted version of the input iterable<br>
+            <input type="radio" name="q4" value="D"> D. The sum of list elements<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <div class="mb-4" id="q5">
+            <label><strong>5. Which function rounds a floating-point number?</strong></label><br>
+            <input type="radio" name="q5" value="A"> A. round()<br>
+            <input type="radio" name="q5" value="B"> B. float()<br>
+            <input type="radio" name="q5" value="C"> C. int()<br>
+            <input type="radio" name="q5" value="D"> D. decimal()<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <div class="mb-4" id="q6">
+            <label><strong>6. What is the purpose of the <code>type()</code> function?</strong></label><br>
+            <input type="radio" name="q6" value="A"> A. To convert one data type into another<br>
+            <input type="radio" name="q6" value="B"> B. To return the data type of a variable<br>
+            <input type="radio" name="q6" value="C"> C. To define a new type<br>
+            <input type="radio" name="q6" value="D"> D. To print the size of a variable<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <button type="button" class="btn btn-primary" onclick="checkAnswers()">Submit Quiz</button>
+          <div id="result" class="mt-4 fw-bold"></div>
+        </form>
+    
+        <div class="d-flex justify-content-end mt-4">
+          <a href="../builtFunction.html" class="btn btn-secondary me-3">Go Back</a>
+          <a href="../ifStatement.html" class="btn btn-secondary">Next Python Concept</a>
+        </div>
+      </div>
+    
+      <script>
+        function checkAnswers() {
+          const answers = {
+            q1: "C",
+            q2: "B",
+            q3: "D",
+            q4: "C",
+            q5: "A",
+            q6: "B"
+          };
+    
+          const explanations = {
+            q1: "len() returns the number of items in an object such as a list or string.",
+            q2: "input() is used to get input from the user via the keyboard.",
+            q3: "abs(-10) returns 10 — the absolute value of -10.",
+            q4: "sorted() returns a new list containing all items in ascending order.",
+            q5: "round() is used to round floating-point numbers to the nearest value.",
+            q6: "type() returns the type of an object like int, str, list, etc."
+          };
+    
+          let score = 0;
+          let unanswered = false;
+    
+          for (let q in answers) {
+            const selected = document.querySelector(`input[name="${q}"]:checked`);
+            const feedback = document.querySelector(`#${q} .feedback`);
+            if (selected) {
+              if (selected.value === answers[q]) {
+                feedback.textContent = "Correct!";
+                feedback.style.color = "green";
+                score++;
+              } else {
+                feedback.textContent = `Incorrect. ${explanations[q]}`;
+                feedback.style.color = "red";
+              }
+            } else {
+              feedback.textContent = "You did not answer this question.";
+              feedback.style.color = "orange";
+              unanswered = true;
+            }
+          }
+    
+          if (unanswered) {
+            alert("You have unanswered questions. Please answer all questions before submitting.");
+          }
+    
+          document.getElementById("result").textContent = `You scored ${score} out of 6.`;
+        }
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

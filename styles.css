@@ -195,6 +195,52 @@ tbody tr:hover {
     background-color: #0056b3;
 }
 
+/* Nav Bar */
+
+.dropdown-item {
+    display: block;
+    white-space: normal;
+    word-break: break-word;
+    padding: 0.5rem 0.75rem;
+    line-height: 1.2;
+    border-radius: 0.25rem;
+  }
+  
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    background-color: #e9ecef;
+    color: #212529;
+  }
+  
+  .dropdown-item.active,
+  .dropdown-item.active:hover,
+  .dropdown-item.active:focus {
+    background-color: #0d6efd;
+    color: white;
+    font-weight: 600;
+  }
+
+  .dropdown-menu .dropdown-item {
+    border-bottom: 0.5px solid #ccc; /* thin gray line */
+  }
+
+  .dropdown-menu .dropdown-item:last-child {
+    border-bottom: none;
+  }
+
+  .question {
+    margin-bottom: 20px; /* Adds space between each question */
+}
+
+.question p {
+    margin-bottom: 10px; /* Adds space between the question text and options */
+}
+
+.feedback {
+    margin-top: 5px; /* Adds some space above the feedback */
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {

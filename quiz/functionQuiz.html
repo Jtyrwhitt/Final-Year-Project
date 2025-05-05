@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../styles.css" rel="stylesheet">
+    <title>Function Quiz</title>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../index.html">Python Tool</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="conceptDropdown" role="button" data-bs-toggle="dropdown">
+                Python Concepts
+              </a>
+              <ul class="dropdown-menu p-3" aria-labelledby="conceptDropdown">
+                <a class="dropdown-item" href="../builtFunction.html">Built In Functions</a>
+                <a class="dropdown-item" href="../comments.html">Comments</a>
+                <a class="dropdown-item" href="../deque.html">Deque</a>
+                <a class="dropdown-item" href="../dictionaries.html">Dictionaries</a>
+                <a class="dropdown-item" href="../enum.html">Enum</a>
+                <a class="dropdown-item" href="../forLoop.html">For Loop</a>
+                <a class="dropdown-item active" href="../function.html">Functions</a>
+                <a class="dropdown-item" href="../ifStatement.html">If Statement</a>
+                <a class="dropdown-item" href="../modules.html">Import Modules</a>
+                <a class="dropdown-item" href="../inheritance.html">Inheritance</a>
+                <a class="dropdown-item" href="../lists.html">Lists</a>
+                <a class="dropdown-item" href="../logicalOperator.html">Logical Operator</a>
+                <a class="dropdown-item" href="../mathOperator.html">Mathematical Operators</a>
+                <a class="dropdown-item" href="../printStatement.html">Print Statement</a>
+                <a class="dropdown-item" href="../recursion.html">Recursion</a>
+                <a class="dropdown-item" href="../sets.html">Sets</a>
+                <a class="dropdown-item" href="../error.html">Syntax, Runtime, Logic Errors</a>
+                <a class="dropdown-item" href="../threading.html">Threading</a>
+                <a class="dropdown-item" href="../tuples.html">Tuples</a>
+                <a class="dropdown-item" href="../variable.html">Variables</a>
+                <a class="dropdown-item" href="../whileLoop.html">While Loop</a>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</head>
+<body>
+    <div class="container my-5">
+        <h1>Functions Quiz</h1>
+        <form id="quizForm">
+    
+          <div class="mb-4" id="q1">
+            <label><strong>1. Which keyword is used to define a function in Python?</strong></label><br>
+            <input type="radio" name="q1" value="A"> A. func<br>
+            <input type="radio" name="q1" value="B"> B. def<br>
+            <input type="radio" name="q1" value="C"> C. function<br>
+            <input type="radio" name="q1" value="D"> D. define<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <div class="mb-4" id="q2">
+            <label><strong>2. What does the <code>return</code> keyword do in a function?</strong></label><br>
+            <input type="radio" name="q2" value="A"> A. It stops the program<br>
+            <input type="radio" name="q2" value="B"> B. It calls another function<br>
+            <input type="radio" name="q2" value="C"> C. It sends a value back to where the function was called<br>
+            <input type="radio" name="q2" value="D"> D. It prints a message<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <div class="mb-4" id="q3">
+            <label><strong>3. What are parameters in a function?</strong></label><br>
+            <input type="radio" name="q3" value="A"> A. Inputs defined in the function declaration<br>
+            <input type="radio" name="q3" value="B"> B. Global variables<br>
+            <input type="radio" name="q3" value="C"> C. Outputs from the function<br>
+            <input type="radio" name="q3" value="D"> D. Return values<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <div class="mb-4" id="q4">
+            <label><strong>4. Which symbol is used to accept an unknown number of arguments?</strong></label><br>
+            <input type="radio" name="q4" value="A"> A. &<br>
+            <input type="radio" name="q4" value="B"> B. ?<br>
+            <input type="radio" name="q4" value="C"> C. #<br>
+            <input type="radio" name="q4" value="D"> D. *<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <div class="mb-4" id="q5">
+            <label><strong>5. What type of data structure does <code>*args</code> store the arguments in?</strong></label><br>
+            <input type="radio" name="q5" value="A"> A. Dictionary<br>
+            <input type="radio" name="q5" value="B"> B. List<br>
+            <input type="radio" name="q5" value="C"> C. Tuple<br>
+            <input type="radio" name="q5" value="D"> D. Set<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <div class="mb-4" id="q6">
+            <label><strong>6. What is the output of this function call?</strong><br>
+            <code>check_color("red")</code></label><br>
+            <input type="radio" name="q6" value="A"> A. The color is blue<br>
+            <input type="radio" name="q6" value="B"> B. Your color is red<br>
+            <input type="radio" name="q6" value="C"> C. Red is not allowed<br>
+            <input type="radio" name="q6" value="D"> D. Error<br>
+            <div class="feedback mt-2"></div>
+          </div>
+    
+          <button type="button" class="btn btn-primary" onclick="checkAnswers()">Submit Quiz</button>
+          <div id="result" class="mt-4 fw-bold"></div>
+        </form>
+    
+        <div class="d-flex justify-content-end mt-4">
+          <a href="../function.html" class="btn btn-secondary me-3">Go Back</a>
+          <a href="../lists.html" class="btn btn-secondary">Next Python Concept</a>
+        </div>
+      </div>
+    
+      <script>
+        function checkAnswers() {
+          const answers = {
+            q1: "B",
+            q2: "C",
+            q3: "A",
+            q4: "D",
+            q5: "C",
+            q6: "B"
+          };
+    
+          const explanations = {
+            q1: "'def' is used to define a function in Python.",
+            q2: "'return' sends back a result from the function.",
+            q3: "Parameters are inputs declared in the function definition.",
+            q4: "The '*' symbol allows arbitrary arguments.",
+            q5: "*args collects arguments into a tuple.",
+            q6: "check_color('red') returns 'Your color is red'."
+          };
+    
+          let score = 0;
+          let unanswered = false;
+    
+          for (let q in answers) {
+            const selected = document.querySelector(`input[name="${q}"]:checked`);
+            const feedback = document.querySelector(`#${q} .feedback`);
+            if (selected) {
+              if (selected.value === answers[q]) {
+                feedback.textContent = "Correct!";
+                feedback.style.color = "green";
+                score++;
+              } else {
+                feedback.textContent = `Incorrect. ${explanations[q]}`;
+                feedback.style.color = "red";
+              }
+            } else {
+              feedback.textContent = "You did not answer this question.";
+              feedback.style.color = "orange";
+              unanswered = true;
+            }
+          }
+    
+          if (unanswered) {
+            alert("Please answer all questions before submitting.");
+          }
+    
+          document.getElementById("result").textContent = `You scored ${score} out of 6.`;
+        }
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

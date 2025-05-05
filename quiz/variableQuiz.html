@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Variable Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../styles.css" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../index.html">Python Tool</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="conceptDropdown" role="button" data-bs-toggle="dropdown">
+              Python Concepts
+            </a>
+            <ul class="dropdown-menu p-3" aria-labelledby="conceptDropdown">
+              <a class="dropdown-item" href="../builtFunction.html">Built In Functions</a>
+              <a class="dropdown-item" href="../comments.html">Comments</a>
+              <a class="dropdown-item" href="../deque.html">Deque</a>
+              <a class="dropdown-item" href="../dictionaries.html">Dictionaries</a>
+              <a class="dropdown-item" href="../enum.html">Enum</a>
+              <a class="dropdown-item" href="../forLoop.html">For Loop</a>
+              <a class="dropdown-item" href="../function.html">Functions</a>
+              <a class="dropdown-item" href="../ifStatement.html">If Statement</a>
+              <a class="dropdown-item" href="../modules.html">Import Modules</a>
+              <a class="dropdown-item" href="../inheritance.html">Inheritance</a>
+              <a class="dropdown-item" href="../lists.html">Lists</a>
+              <a class="dropdown-item" href="../logicalOperator.html">Logical Operator</a>
+              <a class="dropdown-item" href="../mathOperator.html">Mathematical Operators</a>
+              <a class="dropdown-item" href="../printStatement.html">Print Statement</a>
+              <a class="dropdown-item" href="../recursion.html">Recursion</a>
+              <a class="dropdown-item" href="../sets.html">Sets</a>
+              <a class="dropdown-item" href="../error.html">Syntax, Runtime, Logic Errors</a>
+              <a class="dropdown-item" href="../threading.html">Threading</a>
+              <a class="dropdown-item" href="../tuples.html">Tuples</a>
+              <a class="dropdown-item active" href="../variable.html">Variables</a>
+              <a class="dropdown-item" href="../whileLoop.html">While Loop</a>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <h1 class="mb-4">Variables Quiz</h1>
+    <form id="quizForm">
+  <div class="mb-4" id="q1">
+    <label><strong>1. What is the purpose of a variable in programming?</strong></label><br>
+      <input type="radio" name="q1" value="A"> A. To delete memory<br>
+      <input type="radio" name="q1" value="B"> B. To create graphics<br>
+      <input type="radio" name="q1" value="C"> C. To store data<br>
+      <input type="radio" name="q1" value="D"> D. To comment code<br>
+    <div class="feedback mt-2"></div>
+  </div>
+
+  <div class="mb-4" id="q2">
+    <label><strong>2. Which of the following is a valid variable name?</strong></label><br>
+      <input type="radio" name="q2" value="A"> A. user_name<br>
+      <input type="radio" name="q2" value="B"> B. 1stName<br>
+      <input type="radio" name="q2" value="C"> C. @value<br>
+      <input type="radio" name="q2" value="D"> D. first-name<br>
+    <div class="feedback mt-2"></div>
+  </div>
+
+  <div class="mb-4" id="q3">
+    <label><strong>3. What symbol is used to assign a value to a variable?</strong></label><br>
+      <input type="radio" name="q3" value="A"> A. =><br>
+      <input type="radio" name="q3" value="B"> B. ==<br>
+      <input type="radio" name="q3" value="C"> C. :=<br>
+      <input type="radio" name="q3" value="D"> D. =<br>
+    <div class="feedback mt-2"></div>
+  </div>
+
+  <div class="mb-4" id="q4">
+    <label><strong>4. Which of the following is a Boolean value?</strong></label><br>
+      <input type="radio" name="q4" value="A"> A. True<br>
+      <input type="radio" name="q4" value="B"> B. "True"<br>
+      <input type="radio" name="q4" value="C"> C. 0<br>
+      <input type="radio" name="q4" value="D"> D. 'False'<br>
+    <div class="feedback mt-2"></div>
+  </div>
+
+  <div class="mb-4" id="q5">
+    <label><strong>5. Which of these is NOT a valid data type for a variable?</strong></label><br>
+      <input type="radio" name="q5" value="A"> A. Boolean<br>
+      <input type="radio" name="q5" value="B"> B. Integer<br>
+      <input type="radio" name="q5" value="C"> C. Picture<br>
+      <input type="radio" name="q5" value="D"> D. String<br>
+    <div class="feedback mt-2"></div>
+  </div>
+
+  <div class="mb-4" id="q6">
+      <label><strong>6. What does it mean that variables are case sensitive?</strong></label><br>
+          <input type="radio" name="q6" value="A"> A. <code>myVar</code> and <code>myvar</code> are different variables<br>
+          <input type="radio" name="q6" value="B"> B. Variable names must be uppercase<br>
+          <input type="radio" name="q6" value="C"> C. Only lowercase is allowed<br>
+          <input type="radio" name="q6" value="D"> D. Letters and numbers can't be mixed<br>
+        <div class="feedback mt-2"></div>
+      </div>
+    </form>
+
+    <button type="button" class="btn btn-primary mt-3" onclick="checkAnswers()">Submit Quiz</button>
+    <div id="result" class="mt-4 fs-5 fw-bold"></div>
+
+    <div class="d-flex justify-content-end mt-4">
+      <a href="../variable.html" class="btn btn-secondary me-3">Go Back</a>
+      <a href="../printStatement.html" class="btn btn-secondary">Next Python Concept</a>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: "C",
+        q2: "A",
+        q3: "D",
+        q4: "A",
+        q5: "C",
+        q6: "A"
+      };
+
+      const explanations = {
+        q1: "A variable stores data in a program.",
+        q2: "'user_name' is valid; variables can't start with a number or have special symbols.",
+        q3: "'=' is used for assignment in Python.",
+        q4: "'True' is a Boolean value, not the string 'True' or numbers.",
+        q5: "Picture is not a standard Python data type.",
+        q6: "Case-sensitive means 'myVar' and 'myvar' are different."
+      };
+
+      let score = 0;
+      let unanswered = false;
+
+      for (let q in answers) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        const feedback = document.querySelector(`#${q} .feedback`);
+        if (selected) {
+          if (selected.value === answers[q]) {
+            feedback.textContent = "Correct!";
+            feedback.style.color = "green";
+            score++;
+          } else {
+            feedback.textContent = "Incorrect. " + explanations[q];
+            feedback.style.color = "red";
+          }
+        } else {
+          feedback.textContent = "You did not answer this question.";
+          feedback.style.color = "orange";
+          unanswered = true;
+        }
+      }
+
+      if (!unanswered) {
+        document.getElementById("result").textContent = `You scored ${score} out of 6.`;
+      } else {
+        alert("You have unanswered questions.");
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
